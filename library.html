@@ -1,0 +1,151 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="library.css">
+  <title>Library System</title>
+</head>
+
+<body>
+  <header class="library-header">
+    Library
+  </header>
+  <main>
+    <aside>
+      <div class="aside-top">
+        <img class="profile-img" src="assets/profile.jpg" alt="">
+        <div>
+          <p>Welcome</p>
+          <p class="top-text">Admin</p>
+        </div>
+      </div>
+      <div class="side-btns">
+        <div class="btn-open">Add Book</div>
+        <div class="btn-open2">Register Librarian</div>
+
+      </div>
+    </aside>
+    <div class="right-div">
+      <div class="library-info">
+        <div id="book-tab">
+          <span id="book-num">1</span>
+          <p>Books</p>
+        </div>
+        <div id="librarian-tab">
+          <span id="librarian-num">1</span>
+          <p>Librarians</p>
+        </div>
+        <div>
+          <span id="author-num">1</span>
+          <p>Authors</p>
+        </div>
+      </div>
+      <section id="librarian-section" class="listItems hidden">
+        <h3>List Of Librarians</h3>
+        <table id="myTable">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Email</th>
+              <th>Phone number</th>
+            </tr>
+          </thead>
+          <tbody id="showLibrarians">
+
+          </tbody>
+        </table>
+      </section>
+
+      <section id="book-section" class="listItems">
+        <h3>List Of Names</h3>
+        <table id="myTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody id="showBooks">
+
+
+          </tbody>
+        </table>
+    </div>
+    </section>
+    </div>
+
+    <section class="modal hidden">
+      <button class="btn-close">X</button>
+      <h3>Add a Book</h3>
+      <form id="book-form">
+        <div>
+          <label for="title">Book Title</label>
+          <input id="name-input" type="text">
+        </div>
+        <div>
+          <label for="title">Category</label>
+          <input id="category-input" type="text">
+        </div>
+        <div>
+          <label for="title">Quantity</label>
+          <input id="quantity-input" type="text">
+        </div>
+        <div>
+          <label for="title">Date Published</label>
+          <input id="date-input" type="text">
+        </div>
+        <button id="bookForm-btn">Submit</button>
+      </form>
+
+    </section>
+    <section class="register-modal modal hidden">
+      <button id="close-regBtn" class="btn-close">X</button>
+      <form id="book-form">
+        <h3>Register a Librarian</h3>
+        <div>
+          <label for="title">First name</label>
+          <input id="fname-input" type="text">
+        </div>
+        <div>
+          <label for="title">Last Name</label>
+          <input id="lname-input" type="text">
+        </div>
+        <div>
+          <label for="title">Email</label>
+          <input id="email-input" type="email">
+        </div>
+        <div>
+          <label for="title">Phone number</label>
+          <input id="phone-input" type="text">
+        </div>
+        <div>
+          <label for="title">Gender</label>
+          <!-- <input id="gender-input" type="text"> -->
+          <div class="radio-div">
+            <div>
+              <label for="male-radio">Male</label>
+              <input class="radio" type="radio" name="gender" value="MALE" id="male-radio">
+            </div>
+            <div>
+              <label for="female-radio">Female</label>
+              <input class="radio" type="radio" name="gender" value="FEMALE" id="female-radio">
+            </div>
+
+          </div>
+        </div>
+        <button id="librarianForm-btn">Submit</button>
+      </form>
+
+    </section>
+    <div class="overlay hidden"></div>
+
+
+    </div>
+  </main>
+  <script defer src="library.js"></script>
+</body>
+
+</html>
