@@ -103,7 +103,8 @@ class Books {
     name: string,
     quantity: number,
     category: string,
-    datePublished: string
+    datePublished: string,
+    
   ) {
     this.name = name;
     this.quantity = quantity;
@@ -152,32 +153,27 @@ const newAuthor = new Authors(
   "09067084313"
 );
 new Librarian(
-  "Olaide",
-  "Olaide",
-  "ayohassan@gmail.com",
+  "Mary",
+  "Sarah",
+  "marysarah23@gmail.com",
   "FEMALE",
-  "09067084313"
+  "08023214872"
 );
-new Librarian("Hanif", "Hanif", "ayohassan@gmail.com", "MALE", "09067084313");
-new Librarian("Bayo", "Oyab", "ayohassan@gmail.com", "MALE", "09067084313");
-const book1 = new Books("Harry Potter", 100, "fiction", "2000");
+new Librarian("Hanif", "Hanif", "hanif_903@gmail.com", "MALE", "09067084313");
+new Librarian("Bayo", "Oyab", "bayooyab@gmail.com", "MALE", "09067084313");
+const book1 = new Books("Harry Potter", 20, "fiction", "2000");
 book1.assignAuthor(newAuthor);
 
+lib.assignLibrarians(new Librarian("Hanif", "Hanif", "hanif_903@gmail.com", "MALE", "09067084313"));
+lib.assignLibrarians(new Librarian("Bayo", "Oyab", "bayooyab@gmail.com", "MALE", "09067084313"));
 lib.assignLibrarians(hassan);
-lib.assignLibrarians(
-  new Librarian(
-    "Olaide",
-    "Olaide",
-    "ayohassan@gmail.com",
-    "FEMALE",
-    "09067084313"
-  )
-);
-lib.assignLibrarians(hassan);
+lib.assignLibrarians(new Librarian("Mary","Sarah","marysarah23@gmail.com","FEMALE","08023214872"));
 lib.addBook(book1);
-lib.addBook(new Books("Hunger Games", 100, "Action", "2000"));
+lib.addBook(new Books("Hunger Games", 45, "Action", "2000"));
 lib.addBook(new Books("Science book", 100, "Adventure", "2000"));
-lib.addBook(new Books("Past Questions", 100, "Drama", "2000"));
+lib.addBook(new Books("Past Questions", 39, "Drama", "2000"));
+lib.addBook(new Books("Philosophy by Socrates", 10, "Philosophy", "2000"));
+lib.addBook(new Books("Game of Thrones", 100, "Fantasy", "2000"));
 
 console.log(lib.librariansList);
 
