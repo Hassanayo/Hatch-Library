@@ -179,7 +179,7 @@ lib.addBook(new Books("Hunger Games", 100, "Action", "2000"));
 lib.addBook(new Books("Science book", 100, "Adventure", "2000"));
 lib.addBook(new Books("Past Questions", 100, "Drama", "2000"));
 
-console.log(lib.librariansList); 
+console.log(lib.librariansList);
 
 //Linking to html
 const numBooks = document.getElementById("book-num") as HTMLElement;
@@ -294,6 +294,53 @@ const dateInput = document.getElementById("date-input") as HTMLInputElement;
 const quantityInput = document.getElementById(
   "quantity-input"
 ) as HTMLInputElement;
+const libFName = document.getElementById("fname-input") as HTMLInputElement;
+const libLName = document.getElementById("lname-input") as HTMLInputElement;
+const libEmail = document.getElementById("email-input") as HTMLInputElement;
+const libPhone = document.getElementById("phone-input") as HTMLInputElement;
+const radios = document.getElementsByName("gender") as any;
+let selectedGender: Gender;
+
+librarianFormBtn?.addEventListener("click", (e) => {
+  e.preventDefault();
+  for (const radio of radios) {
+    if (radio.checked) {
+      selectedGender = radio.value;
+      if (
+        libFName.value &&
+        libLName.value &&
+        libEmail.value &&
+        libPhone.value &&
+        selectedGender
+      ) {
+        const newLibrarian = new Librarian(
+          libFName.value,
+          libLName.value,
+          libEmail.value,
+          selectedGender,
+          libPhone.value
+        );
+        lib.assignLibrarians(newLibrarian);
+
+        const librarianElement = document.createElement("tr");
+
+        // Set the content of the element to the librarian data
+        librarianElement.innerHTML = `
+          <td>${libFName.value}</td>
+          <td>${libEmail.value}</td>
+          <td>${libPhone.value}</td>
+        `;
+
+        // Add the new element to the librarians container in the HTML
+        showLibrarians.append(librarianElement);
+      }
+    }
+  }
+
+  console.log(lib.librariansList);
+
+  numLibrarians.innerText = lib.librariansList.length.toString();
+});
 
 bookFormBtn?.addEventListener("click", (e) => {
   e.preventDefault();
@@ -326,41 +373,3 @@ bookFormBtn?.addEventListener("click", (e) => {
   console.log(lib.libraryBooks);
   numBooks.innerText = lib.libraryBooks.length.toString();
 });
-
-const libFName = document.getElementById("fname-input") as HTMLInputElement;
-const libLName = document.getElementById("fname-input") as HTMLInputElement;
-const libEmail = document.getElementById("fname-input") as HTMLInputElement;
-const libPhone = document.getElementById("fname-input") as HTMLInputElement;
-const radios = document.getElementsByName("gender") as any;
-let selectedGender;
-
-for (const radio of radios) {
-  if (radio.checked) {
-    selectedGender = radio.value;
-    break;
-  }
-}
-librarianFormBtn?.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (libFName.value && libLName.value && libEmail.value && libPhone.value) {
-    const newLibrarian = new Librarian(libFName.value,libLName.value, libEmail.value, "MALE", libPhone.value);
-    lib.assignLibrarians(newLibrarian);
-
-
-    const librarianElement = document.createElement("tr");
-
-    // Set the content of the element to the librarian data
-    librarianElement.innerHTML = `
-      <td>${libFName.value}</td>
-      <td>${libLName.value}</td>
-      <td>${libEmail.value}</td>
-    `;
-    
-    // Add the new element to the librarians container in the HTML
-    showLibrarians.append(librarianElement);
-  }
-  console.log(lib.librariansList);
-  
-  numLibrarians.innerText = lib.libraryBooks.length.toString();
-});
-

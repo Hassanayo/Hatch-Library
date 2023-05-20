@@ -226,6 +226,36 @@ var nameInput = document.getElementById("name-input");
 var categoryInput = document.getElementById("category-input");
 var dateInput = document.getElementById("date-input");
 var quantityInput = document.getElementById("quantity-input");
+var libFName = document.getElementById("fname-input");
+var libLName = document.getElementById("lname-input");
+var libEmail = document.getElementById("email-input");
+var libPhone = document.getElementById("phone-input");
+var radios = document.getElementsByName("gender");
+var selectedGender;
+librarianFormBtn === null || librarianFormBtn === void 0 ? void 0 : librarianFormBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    for (var _i = 0, radios_1 = radios; _i < radios_1.length; _i++) {
+        var radio = radios_1[_i];
+        if (radio.checked) {
+            selectedGender = radio.value;
+            if (libFName.value &&
+                libLName.value &&
+                libEmail.value &&
+                libPhone.value &&
+                selectedGender) {
+                var newLibrarian = new Librarian(libFName.value, libLName.value, libEmail.value, selectedGender, libPhone.value);
+                lib.assignLibrarians(newLibrarian);
+                var librarianElement = document.createElement("tr");
+                // Set the content of the element to the librarian data
+                librarianElement.innerHTML = "\n          <td>".concat(libFName.value, "</td>\n          <td>").concat(libEmail.value, "</td>\n          <td>").concat(libPhone.value, "</td>\n        ");
+                // Add the new element to the librarians container in the HTML
+                showLibrarians.append(librarianElement);
+            }
+        }
+    }
+    console.log(lib.librariansList);
+    numLibrarians.innerText = lib.librariansList.length.toString();
+});
 bookFormBtn === null || bookFormBtn === void 0 ? void 0 : bookFormBtn.addEventListener("click", function (e) {
     e.preventDefault();
     if (nameInput.value &&
@@ -241,31 +271,4 @@ bookFormBtn === null || bookFormBtn === void 0 ? void 0 : bookFormBtn.addEventLi
     }
     console.log(lib.libraryBooks);
     numBooks.innerText = lib.libraryBooks.length.toString();
-});
-var libFName = document.getElementById("fname-input");
-var libLName = document.getElementById("fname-input");
-var libEmail = document.getElementById("fname-input");
-var libPhone = document.getElementById("fname-input");
-var radios = document.getElementsByName("gender");
-var selectedGender;
-for (var _i = 0, radios_1 = radios; _i < radios_1.length; _i++) {
-    var radio = radios_1[_i];
-    if (radio.checked) {
-        selectedGender = radio.value;
-        break;
-    }
-}
-librarianFormBtn === null || librarianFormBtn === void 0 ? void 0 : librarianFormBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-    if (libFName.value && libLName.value && libEmail.value && libPhone.value) {
-        var newLibrarian = new Librarian(libFName.value, libLName.value, libEmail.value, "MALE", libPhone.value);
-        lib.assignLibrarians(newLibrarian);
-        var librarianElement = document.createElement("tr");
-        // Set the content of the element to the librarian data
-        librarianElement.innerHTML = "\n      <td>".concat(libFName.value, "</td>\n      <td>").concat(libLName.value, "</td>\n      <td>").concat(libEmail.value, "</td>\n    ");
-        // Add the new element to the librarians container in the HTML
-        showLibrarians.append(librarianElement);
-    }
-    console.log(lib.librariansList);
-    numLibrarians.innerText = lib.libraryBooks.length.toString();
 });
